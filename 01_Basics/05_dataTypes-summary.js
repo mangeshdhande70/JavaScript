@@ -44,9 +44,9 @@ console.log("Type of Array :: "+typeof array);
 // Objects
 console.log("\n***** Object ******");
 let myObject = {
-    "name":"Mangesh",
-    "age": 24,
-    "height": 6.5
+    name:"Mangesh",
+    age: 24,
+    height: 6.5
 }
 console.log(myObject);
 console.log("Type of Object :: "+typeof myObject);
