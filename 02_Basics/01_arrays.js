@@ -40,3 +40,5 @@ console.log(myNewArr);
 const myNewArr1 = myArray.splice(1,3)
 console.log("A" , myArray);
 console.log(myNewArr1);
+
+
