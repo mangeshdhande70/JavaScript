@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM with chai aur code</title>
+</head>
+<body style="background-color: #212121; color: #ffff;">
+
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+    
+</body>
+
+<script>
+
+  function addLanguage(language){
+
+    const li = document.createElement("li")
+    li.innerHTML = `${language}`
+    document.querySelector('.language').appendChild(li)
+
+  }
+  addLanguage("Java")
+  addLanguage("Python")
+
+
+  function addLangInOptimizeWay(lang){
+    const li = document.createElement('li')
+    li.appendChild(document.createTextNode(`${lang}`))
+    document.querySelector('.language').appendChild(li)
+  }
+
+  addLangInOptimizeWay("C++")
+
+
+  // Edit
+  const secondLang = document.querySelector("li:nth-child(2)")
+//   secondLang.innerHTML = "SQL"
+  
+  const newLi  = document.createElement('li')
+  newLi.textContent = "Ruby"
+  secondLang.replaceWith(newLi)
+
+//edit
+  const firstLang = document.querySelector("li:first-child")
+  firstLang.outerHTML = '<li>TypeScript</li>'
+
+
+  
+// Remove  
+  const lastChild = document.querySelector("li:last-child")
+  lastChild.remove();
+
+
+  const thirdChild = document.querySelector("li:nth-child(3)")
+  console.log(thirdChild);
+  thirdChild.remove()
+
+
+
+
+
+
+</script>
+
+
+</html>
