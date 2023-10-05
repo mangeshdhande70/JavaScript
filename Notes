@@ -13,8 +13,8 @@
 
  ***** Imp functions ********
  1. querySelector() => for class use . , for id use #, to select input where type is pass then  querySelector('input[type="pass"]') 
- 2. HTMLCollection
- 3. NodeList
+ 2. HTMLCollection  => You can't apply forEach, you need to convert it to array using..Array.from(HTMLCollection)
+ 3. NodeList        => You can apply forEach
 
   
 
