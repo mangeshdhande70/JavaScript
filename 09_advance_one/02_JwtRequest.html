@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JWT REQUEST</h1>
+</body>
+
+<script>
+   const requestUrl = 'http://localhost:9990/auth/authenticate';
+   const request =  new XMLHttpRequest()
+   request.open('POST',requestUrl,true)
+   console.log(request.readyState); 
+
+   let authRequest ={
+    "username":"md7@gmail.com",
+    "password":"1234"
+   }
+
+   console.log(typeof authRequest);
+
+   if(request.readyState === 1){
+            request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            // request.send(JSON.stringify(authRequest));
+
+            request.send(JSON.stringify(authRequest));
+            console.log("Pass & Username Set"); 
+     }
+
+
+   request.onreadystatechange = function(){
+
+     console.log(request.readyState);
+     if(request.readyState === 4){
+        response = JSON.parse(this.responseText)
+        // console.log(response) 
+        // console.log(typeof response) 
+        const jwtToken  = response.jwt
+        console.log(jwtToken) 
+        localStorage.setItem("Authorization" , `${jwtToken}`)
+     }
+   };   
+   request.send()
+</script>
+</html>

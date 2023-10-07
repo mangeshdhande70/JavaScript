@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Color Changing Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body style="background-color: #212121; color: #ffff">
+    <nav>
+      <a href="/" aria-current="page">Home</a>
+      <a target="_blank" href="https://www.youtube.com/@chaiaurcode"
+        >Youtube channel</a
+      >
+    </nav>
+
+    <h1>Start should change the Background color every second</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <script src="chaiaurcode.js"></script>
+  </body>
+
+  <script>
+
+    let colorInterval
+
+    const hex = "0123456789ABCDEF"
+    function randomColor(){
+        let color = "#"
+        for(let i =0 ;i<6;i++){
+            color += Math.floor(Math.random()*10) 
+        } 
+        return color;
+    };
+
+    document.getElementById('start').addEventListener('click',(e)=>{
+     // best practice video 38 & time 31min
+        if(!colorInterval){
+            colorInterval = setInterval(startChangingColor , 1000)
+        }
+       
+    });
+
+   const startChangingColor  = function setBgColor(){
+    //    console.log("Calling setColor");
+       document.body.style.backgroundColor = randomColor();
+   };
+
+   document.getElementById('stop').addEventListener('click',(e)=>{
+        clearInterval(colorInterval)
+        colorInterval = null
+    })
+
+
+  </script>
+
+
+</html>

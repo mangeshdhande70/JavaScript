@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request using XMLHttp</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+   <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+    
+    <h1>XMLHttpRequest</h1>
+
+</body>
+
+
+<script>
+
+   const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+   const request =  new XMLHttpRequest()
+   request.open('GET',requestUrl)
+
+
+   let avatarUrl 
+   let followers
+   let name
+
+   request.onreadystatechange = function(){
+
+     console.log(request.readyState);
+     if(request.readyState === 4){
+        response = this.responseText
+        // console.log(response) 
+        // console.log(typeof response) 
+        const data  = JSON.parse(this.responseText)
+        // console.log(typeof data) 
+        // console.log(data.followers);
+         
+        
+
+         avatarUrl = data.avatar_url
+    //   console.log(avatarUrl);
+         followers = data.followers
+    //   console.log(followers);
+         name = data.name
+         console.log(name);
+      
+      call(followers,avatarUrl,name)
+
+
+     }
+   };   
+   request.send()
+
+   function call(followers,avatarUrl,name){
+    console.log(avatarUrl);
+    console.log(followers);
+
+    const div  = document.createElement('div')
+    div.className = "card"
+    div.style.width = "30%"
+    div.style.margin ="auto"
+    div.style.padding = "10px"
+    div.style.border = "3px solid green"
+    // div.style.display 
+    // div.style.boxShadow = "0 4px 8px 0 rgba(0,0,0,0.2);"
+    div.innerHTML = `
+
+        <img src="${avatarUrl}" alt="Avatar" style="width:100%">
+        <div class="container" styele="padding: 2px 16px;">
+        
+            <h1 style="font-size: 100px;color:blue;text-align:center;"><b>${name}</b></h1>
+            <p style="font-size: 100px;text-align:center;padding:auto;">Followers: ${followers}</p>
+        </div>
+     
+    `
+
+    document.body.appendChild(div)
+
+   }
+  
+
+</script>
+</html>
