@@ -8,7 +8,7 @@ console.log(null == 0);
 console.log(null >= 0);
 
 /*
-  Reason => Comparision convert null to a number, treating it as ).
+  Reason => Comparision convert null to a number, treating it as 0 ).
   That's why null >= 0 is true and null > 0 is false
 */
 
